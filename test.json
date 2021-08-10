@@ -1,0 +1,20 @@
+{
+  "subjects" : [
+    {
+      "id": "18cs00",
+      "name": "some subjects",
+      "description" : "Long string",
+      "modules": ["module 1", "module 2", "module 3"],
+      "notes": [
+        "url 1",
+        "url 2",
+        "url 3",
+        "url 4",
+        "url 5"
+      ]
+    }
+  ] 
+}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Bibendum at varius vel pharetra vel turpis. Leo vel fringilla est ullamcorper eget nulla. Nisi est sit amet facilisis magna etiam tempor orci. Urna condimentum mattis pellentesque id nibh tortor id aliquet lectus. Malesuada proin libero nunc consequat interdum varius sit.
+Condimentum lacinia quis vel eros donec ac odio. Ut aliquam purus sit amet luctus

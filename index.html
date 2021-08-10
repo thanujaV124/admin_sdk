@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sindhi College Admin SDK</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body class="grey lighten-5">
+    <!-- NAVBAR -->
+    <nav class="z-depth-0 white">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">
+                <img src="img/logo.png" style="width: 40PX; margin-top: 10px;">
+            </a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li class="logged-in" style="display: none;">
+                    <a href="#" class="grey-text modal-trigger" data-target="modal-account">Account</a>
+                </li>
+
+                <!-- <li class="admin" style="display: block;">
+                    <a href="#" class="grey-text modal-trigger" data-target="modal-create">Create Guide</a>
+                </li> -->
+                <li class="admin" style="display: none;">
+                    <a href="#" class="grey-text modal-trigger" data-target="modal-notification">Add notification</a>
+                </li>
+                <li class="admin" style="display: none;">
+                    <a href="#" class="grey-text modal-trigger" data-target="modal-subject">Add subjects</a>
+                </li>
+                <li class="admin" style="display: none;">
+                    <a href="#" class="grey-text modal-trigger" data-target="modal-notes">Add Modules/Notes</a>
+                </li>
+                <li class="admin" style="display: none;">
+                    <a href="#" class="grey-text modal-trigger" data-target="modal-usn">Add USN</a>
+                </li>
+                <li class="logged-out" style="display: none;">
+                    <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
+                </li>
+                <li class="admin" style="display: none;">
+                    <a href="#" class="grey-text modal-trigger" data-target="modal-view-subject">View Subjects</a>
+                </li>
+                <li class="logged-in" style="display: none;">
+                    <a href="#" class="red-text" id="logout">Logout</a>
+                </li>
+
+                <!-- <li class="logged-out" style="display: block;">
+                    <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
+                </li> -->
+            </ul>
+        </div>
+    </nav>
+   
+
+    <!-- ACCOUNT MODAL -->
+    <div id="modal-account" class="modal">
+        <div class="modal-content center-align">
+            <h4>Account details</h4><br />
+            <div class="account-details"></div>
+        </div>
+    </div>
+
+    <h3 class="logged-out center-align green-text" style="display: none;">Un-Authorised</h3>
+
+    <!-- SIGN UP MODAL -->
+    <div id="modal-signup" class="modal">
+        <div class="modal-content">
+            <h4>Sign up</h4><br />
+            <form id="signup-form">
+                <div class="input-field">
+                    <input type="email" id="signup-email" required />
+                    <label for="signup-email">Email address</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="signup-password" required />
+                    <label for="signup-password">Choose password</label>
+                </div>
+                <button class="btn blue darken-2 z-depth-0">Sign up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- <button id="btn">Get</button> -->
+
+    <!-- LOGIN MODAL -->
+    <div id="modal-login" class="modal">
+        <div class="modal-content">
+            <h4>Login</h4><br />
+            <form id="login-form">
+                <div class="input-field">
+                    <input type="email" id="login-email" required />
+                    <label for="login-email">Email address</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="login-password" required />
+                    <label for="login-password">Your password</label>
+                </div>
+                <button class="btn blue darken-2 z-depth-0">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- NOTIFICATION LIST -->
+    <div class="container admin" style="margin-top: 40px; display: none;">
+
+        <h4 class="title">Notifications</h4>
+
+        <ul class="collapsible " id="notifications-list" style="border: none;">
+
+
+        </ul>
+    </div>
+
+    <!-- CREATE Notification MODAL -->
+    <div id="modal-notification" class="modal">
+        <div class="modal-content">
+            <h4>Add Notification</h4><br />
+            <form id="create-notification">
+                <div class="input-field">
+                    <input type="text" id="fullName" required>
+                    <label for="fullName">Name</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" id="designation" required>
+                    <label for="designation">designation</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" id="title" required>
+                    <label for="title">Guide Title</label>
+                </div>
+                <div class="input-field">
+                    <textarea id="description" class="materialize-textarea" required></textarea>
+                    <label for="description">Guide Content</label>
+                </div>
+                <button class="btn blue darken-2 z-depth-0">Create</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- CREATE USN MODAL -->
+    <div id="modal-usn" class="modal">
+        <div class="modal-content">
+            <h4>Add Usn</h4><br />
+            <form id="create-usn">
+                <div class="input-field">
+                    <input type="text" id="usn" maxlength="8" required>
+                    <label for="usn">USN</label>
+                    <span class="helper-text error-usn" data-error="wrong" data-success="right">you can enter only 10
+                        charecters</span>
+                </div>
+
+                <button class="btn blue darken-2 z-depth-0">Create</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- CREATE SUBJECT MODAL -->
+    <div id="modal-subject" class="modal">
+        <div class="modal-content">
+            <h4>Add Subject</h4><br />
+
+            <form id="create-subject">
+                <div class="input-field col s12">
+                    <select class="browser-default" id="select-branch" required>
+                        <option value="" disabled selected>Choose Branch</option>
+                        <option value="BCA" id="option-branch">BCA</option>
+                        <option value="BCOM" id="option-branch">BCOM</option>
+                        <option value="BBA" id="option-branch">BBA</option>
+                     
+                    </select>
+                    <!-- <label>Materialize Select</label> -->
+                </div>
+                <div class="input-field col s12">
+                    <select class="browser-default" id="select-sem" required>
+                        <option value="" disabled selected>Choose sem</option>
+                        <option value="1" id="option-sem">Sem 1</option>
+                        <option value="2" id="option-sem">Sem 2</option>
+                        <option value="3" id="option-sem">Sem 3</option>
+                        <option value="4" id="option-sem">Sem 4</option>
+                        <option value="5" id="option-sem">Sem 5</option>
+                        <option value="6" id="option-sem">Sem 6</option>
+                      
+                    </select>
+                    <!-- <label>Materialize Select</label> -->
+                </div>
+                <div class="input-field">
+                    <input type="text" id="subject-code" maxlength="8" required>
+                    <label for="subject-code">Subject Code</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" id="subject-name" required>
+                    <label for="subject-name">Subject Name</label>
+
+                </div>
+                <div class="input-field col s12">
+                    <textarea id="description" class="materialize-textarea"></textarea>
+                    <label for="description">Description</label>
+                </div>
+
+                <button class="btn blue darken-2 z-depth-0">Add</button>
+            </form>
+        </div>
+    </div>
+    <!-- View subject -->
+    <div id="modal-view-subject" class="modal" style=" width: 90%;">
+        <div class="modal-content">
+            <h4>View Subject</h4><br />
+
+            <div class="input-field col s12">
+                <select class="browser-default" id="select-view-branch" required>
+                    <option value="" disabled selected>Choose Branch</option>
+                    <option value="BCA" id="option-branch">BCA</option>
+                    <option value="BCOM" id="option-branch">BCOM</option>
+                    <option value="BBA" id="option-branch">BBA</option>
+                   
+                </select>
+                <!-- <label>Materialize Select</label> -->
+            </div>
+            <div class="input-field col s12">
+                <select class="browser-default" id="select-view-sem" required>
+                    <option value="" disabled selected>Choose sem</option>
+                    <option value="1" id="option-sem">Sem 1</option>
+                    <option value="2" id="option-sem">Sem 2</option>
+                    <option value="3" id="option-sem">Sem 3</option>
+                    <option value="4" id="option-sem">Sem 4</option>
+                    <option value="5" id="option-sem">Sem 5</option>
+                    <option value="6" id="option-sem">Sem 6</option>
+                 
+                </select>
+                <!-- <label>Materialize Select</label> -->
+            </div>
+            <ul class="collapsible " id="subject-list" style="border: none;">
+
+
+            </ul>
+
+        </div>
+    </div>
+
+    <!-- CREATE NOTES MODAL -->
+    <div id="modal-notes" class="modal">
+        <div class="modal-content">
+            <h4>Add Subject</h4><br />
+            <form id="create-notes">
+
+
+                <div class="input-field">
+                    <select class="browser-default" id="select-operation" required>
+                        <option value="" disabled selected>Choose operation</option>
+                        <option value="true" id="option-notes-branch">add module</option>
+                        <option value="false" id="option-notes-branch">add notes</option>
+
+                    </select>
+                    <!-- <label>Materialize Select</label> -->
+                </div>
+                <div class="input-field col s12">
+                    <select class="browser-default" style="display: none;" id="select-notes-branch" required>
+                        <option value="" disabled selected>Choose Branch</option>
+                        <option value="BCA" id="option-notes-branch">BCA</option>
+                        <option value="BCOM" id="option-notes-branch">BCOM</option>
+                        <option value="BBA" id="option-notes-branch">BBA</option>
+                       
+                    </select>
+                    <!-- <label>Materialize Select</label> -->
+                </div>
+                <div class="input-field col s12">
+                    <select class="browser-default" style="display: none;" id="select-notes-sem" required>
+                        <option value="" disabled selected>Choose sem</option>
+                        <option value="1" id="option-notes-sem">Sem 1</option>
+                        <option value="2" id="option-notes-sem">Sem 2</option>
+                        <option value="3" id="option-notes-sem">Sem 3</option>
+                        <option value="4" id="option-notes-sem">Sem 4</option>
+                        <option value="5" id="option-notes-sem">Sem 5</option>
+                        <option value="6" id="option-notes-sem">Sem 6</option>
+                       
+                    </select>
+                    <!-- <label>Materialize Select</label> -->
+                </div>
+                <div class="input-field col s12">
+                    <select class="browser-default" id="select-subcode" style="display: none;" required>
+                        <option value="" disabled selected>Choose sub code</option>
+
+
+                    </select>
+                    <!-- <label>Materialize Select</label> -->
+                </div>
+
+                <div class="input-field" id="module-input" style="display: none;">
+                    <input type="text" id="module">
+                    <label for="module">Module Name</label>
+                </div>
+                <div class="input-field" id="notes-input" style="display: none;">
+                    <progress id="uploader" value="0" max="100">0%</progress>
+                    <input type="file" id="fileButton" value="upload" />
+                </div>
+
+
+                <button class="btn blue darken-2 z-depth-0">Add</button>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-storage.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+           // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCh_sG7RSDLke2T3aAi8slV573mbUkbh6w",
+    authDomain: "sindhi-college-c982d.firebaseapp.com",
+    projectId: "sindhi-college-c982d",
+    storageBucket: "sindhi-college-c982d.appspot.com",
+    messagingSenderId: "9265510790",
+    appId: "1:9265510790:web:880535ddc70354d14a9407"
+  };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+
+        // make auth and firestore refrences
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+        const storage = firebase.storage();
+
+        // update frirestore settings
+        db.settings({ timestampsInSnapshots: true });
+    </script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="scripts/add_module_notes.js"></script>
+    <script src="test.js"></script>
+    <script src="scripts/index.js"></script>
+    <script src="scripts/viewSubjects.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="./addClaim.js"></script>
+</body>
+
+</html>
